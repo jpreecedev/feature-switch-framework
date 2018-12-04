@@ -1,9 +1,15 @@
 /* eslint-disable react/no-danger */
-import React from "react"
-import Helmet from "react-helmet"
+import React from 'react'
+import Helmet from 'react-helmet'
+
+global.features = {
+  first: true,
+  second: true
+}
 
 function HTML({ children, scripts, css }) {
   const head = Helmet.renderStatic()
+
   return (
     <html lang="en">
       <head>
@@ -17,6 +23,11 @@ function HTML({ children, scripts, css }) {
         {css.map(href => (
           <link key={href} rel="stylesheet" href={href} />
         ))}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.features = ${JSON.stringify(global.features)};`
+          }}
+        />
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
