@@ -1,9 +1,9 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import Home from './components/Home'
+import Home from './shared/Home'
 
-import './global/styles.scss'
+import './client/styles.scss'
 
 if (module.hot) {
   module.hot.accept()
