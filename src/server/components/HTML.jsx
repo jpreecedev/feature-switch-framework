@@ -2,11 +2,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-global.features = {
-  first: true,
-  second: true
-}
-
 function HTML({ children, scripts, css }) {
   const head = Helmet.renderStatic()
 
