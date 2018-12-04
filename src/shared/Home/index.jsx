@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import withFeatureSwitches from '../withFeatureSwitches'
+import { withFeatureSwitches } from '@jpreecedev/react-feature-switches'
 import First from '../First'
 import Second from '../Second'
 
