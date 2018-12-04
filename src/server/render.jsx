@@ -1,10 +1,12 @@
-import React from "react"
-import { renderToString } from "react-dom/server"
-import Html from "./components/HTML"
-import Home from "../shared/Home"
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import Html from './components/HTML'
+import Home from '../shared/Home'
 
 const serverRenderer = () => (req, res) => {
-  const content = renderToString(<Home />)
+  global.location = {
+    search: req.url.replace('/?', '')
+  }
 
   return res.send(
     `<!doctype html>${renderToString(
@@ -18,7 +20,7 @@ const serverRenderer = () => (req, res) => {
           res.locals.assetPath("vendor.js")
         ]}
       >
-        {content}
+        {renderToString(<Home />)}
       </Html>
     )}`
   )

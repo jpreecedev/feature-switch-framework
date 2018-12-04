@@ -6,15 +6,14 @@ const withFeatureSwitches = Component => {
   class WithFeatureSwitches extends React.Component {
     constructor(props, context) {
       super(props, context)
-      this.params = WithFeatureSwitches.getQueryParams();
+
+      if (global.location) {
+        this.params = WithFeatureSwitches.getQueryParams(global.location.search);
+      }
     }
 
-    static getQueryParams() {
-      if (!global.location) {
-        return;
-      }
-
-      var qs = global.location.search.split('+').join(' ');
+    static getQueryParams(query) {
+      var qs = query.split('+').join(' ');
 
       var params = {},
         tokens,
